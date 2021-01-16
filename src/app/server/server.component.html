@@ -1,9 +1,0 @@
-<!--attribute directive ngStyle and also we use data binding on attribute (that in our case is directive)-->
-<!--property binding is different from a directive-->
-<p
-        [ngStyle]="{backgroundColor: getColor()}"
-        [ngClass]="{online: serverStatus === 'online'}"
->
-    {{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }}
-</p>
-<!--We can put everything in the string interpolation that can return string-->

@@ -1,22 +1,23 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h3>Hello!!</h3>
-            <hr>
-            <app-servers></app-servers>
-            <!--            <div app-servers></div>  by attribute-->
-            <!--            <div class="app-servers"></div> by class-->
-        </div>
+  <app-cockpit
+    (serverCreated)="onServerAdded($event)"
+    (blueprintCreated)="onBlueprintAdded($event)"
+  ></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">Change first element</button>
+      <button class="btn btn-danger" (click)="onDestroy()">Destroy element</button>
+      <app-server-element
+        *ngFor="let serverElement of serverElements"
+        [element]="serverElement"
+        [name]="serverElement.name">
+        <!--      if we put some code here it won't be put in the dom unless we put directive ng-content in the element html-->
+              <p #contentParagraph>
+                <strong *ngIf="serverElement.type === 'server'" style="color: #ff0000">{{ serverElement.content }}</strong>
+                <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+              </p>
+      </app-server-element>
     </div>
-    <button class="btn btn-primary" (click)="onToggleDetails()">Display Details</button>
-    <p *ngIf="showSecret">Secret Password = tuna</p>
-
-<!--    ngFor how to take the index-->
-    <div
-            *ngFor="let logItem of log; let i = index"
-            [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
-            [ngClass]="{'white-text': i >= 4}"
-    >{{ logItem }}</div>
+  </div>
 </div>
-
-

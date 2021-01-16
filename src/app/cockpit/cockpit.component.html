@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p>Add new Servers or blueprints!</p>
+    <label>Server Name</label>
+<!--    it's the two way data binding but we don't need it, we need only in click of add server to take the input-->
+<!--    <input type="text" class="form-control" [(ngModel)]="newServerName">-->
+<!--    we will use local reference, it can be used for each html element. It will reference to the whole html element not just the value-->
+<!--    we can use local reference only in the template -->
+    <input
+      type="text"
+      class="form-control"
+      #serverNameInput>
+    <label>Server Content</label>
+<!--    <label>{{ serverNameInput.value }}</label> we can use the local reference here too -->
+<!--    <input type="text" class="form-control" [(ngModel)]="newServerContent">  - two way binding -->
+    <input
+      type="text"
+      class="form-control"
+      #serverContentInput>
+    <br>
+    <button
+      class="btn btn-primary"
+      (click)="onAddServer(serverNameInput)">Add Server</button>
+    <button
+      class="btn btn-primary"
+      (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button>
+  </div>
+</div>
